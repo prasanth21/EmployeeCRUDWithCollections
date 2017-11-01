@@ -1,0 +1,33 @@
+<?xml version="1.0" ?> 
+<project name="EmployeeCRUDWithCollections" default="buildjar">
+	
+	<target name="init" depends="clean">
+		<mkdir dir="build/classes" />
+		<mkdir dir="dist" />
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="build/classes" includeantruntime="false">
+		
+		</javac>
+	</target>
+	
+	<target name="buildjar" depends="compile">
+	      <jar destfile="dist/empcrud.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="com.empcrud.collections.EmpCRUDMain"/>
+            </manifest>
+        </jar>
+	</target>
+	
+	
+	<target name="run" depends="buildjar">
+        <java jar="dist/empcrud.jar" fork="true"/>
+    </target>
+	
+	<target name="clean">
+		<delete dir="build" />
+		<delete dir="dist" />
+	</target>
+	
+</project>
